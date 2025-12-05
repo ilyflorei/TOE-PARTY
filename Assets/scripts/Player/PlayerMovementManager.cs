@@ -3,15 +3,25 @@ using Unity.Netcode;
 
 public class PlayerMovementManager : NetworkBehaviour
 {
+    [Header("Movement Control")]
+    [Tooltip("Tag that disables movement when touched")]
+    public string freezeZoneTag = "FreezeZone";
+
+    [Tooltip("Alternative: Layer that disables movement when touched")]
+    public LayerMask freezeZoneLayer;
+
+    [Tooltip("Use tag or layer? (true = tag, false = layer)")]
+    public bool useTag = true;
+
     private CharacterController characterController;
     private FirstPersonMovement movementScript;
-    private bool isGuiltyPlayer = false; // Track if this player is guilty
+    private bool isGuiltyPlayer = false;
+    private bool isInFreezeZone = false;
 
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
 
-        // LOG IMMEDIATELY ON SPAWN
         Debug.Log($"🚨 [SPAWN] Player spawned at: {transform.position} (Client {NetworkManager.Singleton.LocalClientId})");
 
         // Only run for local player
@@ -31,19 +41,81 @@ public class PlayerMovementManager : NetworkBehaviour
             VotingManager.Instance.OnPlayerVotedOut += OnPlayerVotedOut;
         }
 
-        // LOCK MOVEMENT IMMEDIATELY - NO DELAY!
-        LockMovement();
-
-        Debug.Log($"✅ PlayerMovementManager: Locked immediately at position {transform.position}");
+        // MOVEMENT STARTS ENABLED BY DEFAULT
+        EnableMovement();
+        Debug.Log($"✅ PlayerMovementManager: Movement enabled at spawn!");
     }
 
-    void LockMovement()
+    void EnableMovement()
     {
         if (movementScript != null)
         {
-            // Disable the movement script to prevent player input
+            movementScript.enabled = true;
+            Debug.Log("✅ Movement ENABLED - Player can move!");
+        }
+    }
+
+    void DisableMovement()
+    {
+        if (movementScript != null)
+        {
             movementScript.enabled = false;
-            Debug.Log("✅ Movement LOCKED - Player is now stationary!");
+            Debug.Log("🔒 Movement DISABLED - Player is frozen!");
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        // Check if we entered a freeze zone
+        bool isFreezeZone = false;
+
+        if (useTag)
+        {
+            // Check by tag
+            isFreezeZone = other.CompareTag(freezeZoneTag);
+        }
+        else
+        {
+            // Check by layer
+            isFreezeZone = ((1 << other.gameObject.layer) & freezeZoneLayer) != 0;
+        }
+
+        if (isFreezeZone)
+        {
+            isInFreezeZone = true;
+            DisableMovement();
+            Debug.Log($"❄️ Entered freeze zone: {other.gameObject.name}");
+        }
+
+        // Guilty zone logic (if you want to keep this)
+        if (other.CompareTag("GuiltyZone") && isGuiltyPlayer)
+        {
+            Debug.Log("🎭 Guilty player entered the guilty zone!");
+            EnableMovement();
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        // Check if we exited a freeze zone
+        bool isFreezeZone = false;
+
+        if (useTag)
+        {
+            // Check by tag
+            isFreezeZone = other.CompareTag(freezeZoneTag);
+        }
+        else
+        {
+            // Check by layer
+            isFreezeZone = ((1 << other.gameObject.layer) & freezeZoneLayer) != 0;
+        }
+
+        if (isFreezeZone)
+        {
+            isInFreezeZone = false;
+            EnableMovement();
+            Debug.Log($"✅ Exited freeze zone: {other.gameObject.name}");
         }
     }
 
@@ -54,29 +126,14 @@ public class PlayerMovementManager : NetworkBehaviour
 
         if (votedOutClientId == myClientId && wasImposter)
         {
-            Debug.Log("🎭 I was voted out and I was GUILTY! Unlocking movement...");
+            Debug.Log("🎭 I was voted out and I was GUILTY! Movement stays enabled...");
             isGuiltyPlayer = true;
-            UnlockMovement();
-        }
-    }
 
-    void UnlockMovement()
-    {
-        if (movementScript != null)
-        {
-            movementScript.enabled = true;
-            Debug.Log("✅ Movement UNLOCKED - Guilty player can now move!");
-        }
-    }
-
-    // Alternative method using trigger zones
-    void OnTriggerEnter(Collider other)
-    {
-        // If you want to use a trigger zone instead
-        if (other.CompareTag("GuiltyZone") && isGuiltyPlayer)
-        {
-            Debug.Log("Guilty player entered the guilty zone!");
-            UnlockMovement();
+            // Enable movement if not in freeze zone
+            if (!isInFreezeZone)
+            {
+                EnableMovement();
+            }
         }
     }
 

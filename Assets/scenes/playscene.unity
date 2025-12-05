@@ -2459,7 +2459,7 @@ GameObject:
   - component: {fileID: 259849120}
   m_Layer: 5
   m_Name: Canvas (2)
-  m_TagString: Untagged
+  m_TagString: FreezeZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2800,7 +2800,7 @@ GameObject:
   - component: {fileID: 295617647}
   m_Layer: 3
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: FreezeZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4806,7 +4806,7 @@ GameObject:
   - component: {fileID: 529549573}
   m_Layer: 3
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: FreezeZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4918,7 +4918,7 @@ GameObject:
   - component: {fileID: 536704171}
   m_Layer: 3
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: FreezeZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7159,7 +7159,7 @@ GameObject:
   - component: {fileID: 744314398}
   m_Layer: 3
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: FreezeZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11225,60 +11225,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1223351122}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1164477858
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1164477860}
-  - component: {fileID: 1164477859}
-  m_Layer: 0
-  m_Name: SpawnPointManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1164477859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1164477858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b17ea01cee88b1a45a2a2af7298b591c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerSpawnManager
-  spawnPoints:
-  - {fileID: 236826554}
-  - {fileID: 1151161431}
-  - {fileID: 1338361589}
-  - {fileID: 1659561211}
-  - {fileID: 2066835107}
-  - {fileID: 1774770267}
-  - {fileID: 1393899151}
-  - {fileID: 1858839834}
-  playerHeightOffset: -1
---- !u!4 &1164477860
+--- !u!4 &1164477860 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 3320463796271749449, guid: dd38d1d5ba0afcc49b480e2262515ec8, type: 3}
+  m_PrefabInstance: {fileID: 1338802638043913879}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1164477858}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.79767, y: 0, z: -16.22498}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1704543006}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1169314426
 GameObject:
   m_ObjectHideFlags: 0
@@ -11807,7 +11758,7 @@ GameObject:
   - component: {fileID: 1214583127}
   m_Layer: 3
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: FreezeZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12178,7 +12129,7 @@ GameObject:
   - component: {fileID: 1269101106}
   m_Layer: 3
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: FreezeZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13493,7 +13444,7 @@ GameObject:
   - component: {fileID: 1436354055}
   m_Layer: 5
   m_Name: Canvas (2)
-  m_TagString: Untagged
+  m_TagString: FreezeZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14439,7 +14390,7 @@ Light:
   serializedVersion: 11
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2527.2024
+  m_Intensity: 1072.3214
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -14535,7 +14486,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1527498661}
   m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0143}
   m_LocalScale: {x: 0.0031633873, y: 0.0031633873, z: 0.0031633873}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14543,7 +14494,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -965.865, y: -537.58}
+  m_AnchoredPosition: {x: -965.70795, y: -537.58}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1527498663
@@ -16394,6 +16345,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   ShowTopMostFoldoutHeaderGroup: 1
+  freezeZoneTag: FreezeZone
+  freezeZoneLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  useTag: 1
 --- !u!114 &1755959832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17962,7 +17918,7 @@ GameObject:
   - component: {fileID: 1917243760}
   m_Layer: 3
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: FreezeZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19638,7 +19594,7 @@ GameObject:
   - component: {fileID: 2141163132}
   m_Layer: 5
   m_Name: Canvas (1)
-  m_TagString: Untagged
+  m_TagString: FreezeZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20179,6 +20135,95 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4270666169338880252}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1338802638043913879
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1704543006}
+    m_Modifications:
+    - target: {fileID: 1119961872422828403, guid: dd38d1d5ba0afcc49b480e2262515ec8, type: 3}
+      propertyPath: m_Name
+      value: SpawnPointManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3320463796271749449, guid: dd38d1d5ba0afcc49b480e2262515ec8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.79767
+      objectReference: {fileID: 0}
+    - target: {fileID: 3320463796271749449, guid: dd38d1d5ba0afcc49b480e2262515ec8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3320463796271749449, guid: dd38d1d5ba0afcc49b480e2262515ec8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16.22498
+      objectReference: {fileID: 0}
+    - target: {fileID: 3320463796271749449, guid: dd38d1d5ba0afcc49b480e2262515ec8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3320463796271749449, guid: dd38d1d5ba0afcc49b480e2262515ec8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3320463796271749449, guid: dd38d1d5ba0afcc49b480e2262515ec8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3320463796271749449, guid: dd38d1d5ba0afcc49b480e2262515ec8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3320463796271749449, guid: dd38d1d5ba0afcc49b480e2262515ec8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3320463796271749449, guid: dd38d1d5ba0afcc49b480e2262515ec8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3320463796271749449, guid: dd38d1d5ba0afcc49b480e2262515ec8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3619709511350245450, guid: dd38d1d5ba0afcc49b480e2262515ec8, type: 3}
+      propertyPath: 'spawnPoints.Array.data[0]'
+      value: 
+      objectReference: {fileID: 236826554}
+    - target: {fileID: 3619709511350245450, guid: dd38d1d5ba0afcc49b480e2262515ec8, type: 3}
+      propertyPath: 'spawnPoints.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1151161431}
+    - target: {fileID: 3619709511350245450, guid: dd38d1d5ba0afcc49b480e2262515ec8, type: 3}
+      propertyPath: 'spawnPoints.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1338361589}
+    - target: {fileID: 3619709511350245450, guid: dd38d1d5ba0afcc49b480e2262515ec8, type: 3}
+      propertyPath: 'spawnPoints.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1659561211}
+    - target: {fileID: 3619709511350245450, guid: dd38d1d5ba0afcc49b480e2262515ec8, type: 3}
+      propertyPath: 'spawnPoints.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2066835107}
+    - target: {fileID: 3619709511350245450, guid: dd38d1d5ba0afcc49b480e2262515ec8, type: 3}
+      propertyPath: 'spawnPoints.Array.data[5]'
+      value: 
+      objectReference: {fileID: 1774770267}
+    - target: {fileID: 3619709511350245450, guid: dd38d1d5ba0afcc49b480e2262515ec8, type: 3}
+      propertyPath: 'spawnPoints.Array.data[6]'
+      value: 
+      objectReference: {fileID: 1393899151}
+    - target: {fileID: 3619709511350245450, guid: dd38d1d5ba0afcc49b480e2262515ec8, type: 3}
+      propertyPath: 'spawnPoints.Array.data[7]'
+      value: 
+      objectReference: {fileID: 1858839834}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dd38d1d5ba0afcc49b480e2262515ec8, type: 3}
 --- !u!224 &1346421815239239300
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23081,7 +23126,7 @@ GameObject:
   - component: {fileID: 8798816634197625546}
   m_Layer: 3
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: FreezeZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

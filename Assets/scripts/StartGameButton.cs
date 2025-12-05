@@ -2,25 +2,28 @@
 using Unity.Netcode;
 using UnityEngine.SceneManagement;
 
-public class StartGameButton : MonoBehaviour
+public class SceneLoadButton : MonoBehaviour
 {
-    private static StartGameButton instance;
+    [Header("Scene Configuration")]
+    [Tooltip("Name of the scene to load (e.g., 'playscene', 'arena', 'level2')")]
+    public string targetSceneName = "playscene";
 
+    [Header("Player Setup")]
     public GameObject playerPrefab;
+
+    [Header("Lobby Manager (Optional)")]
+    [Tooltip("Should this button spawn the LobbyManager? (Only needed for lobby scene)")]
+    public bool shouldSpawnLobbyManager = false;
+
+    private static int instanceCount = 0;
+    private int myInstanceId;
 
     void Start()
     {
-        if (instance != null && instance != this)
-        {
-            Debug.LogWarning($"⚠️ DUPLICATE StartGameButton detected! Destroying: {gameObject.name}");
-            Destroy(gameObject);
-            return;
-        }
+        myInstanceId = instanceCount++;
+        Debug.Log($"✅ SceneLoadButton created: {gameObject.name} (ID: {myInstanceId})");
 
-        instance = this;
-        Debug.Log($"✅ StartGameButton created: {gameObject.name}");
-
-        if (NetworkManager.Singleton != null && NetworkManager.Singleton.IsHost)
+        if (shouldSpawnLobbyManager && NetworkManager.Singleton != null && NetworkManager.Singleton.IsHost)
         {
             Debug.Log("🔍 HOST DETECTED - Will spawn LobbyManager in 0.2 seconds...");
             Invoke(nameof(SpawnLobbyManager), 0.2f);
@@ -29,10 +32,7 @@ public class StartGameButton : MonoBehaviour
 
     void OnDestroy()
     {
-        if (instance == this)
-        {
-            instance = null;
-        }
+        Debug.Log($"🗑️ SceneLoadButton destroyed: {gameObject.name} (ID: {myInstanceId})");
     }
 
     private void SpawnLobbyManager()
@@ -68,9 +68,9 @@ public class StartGameButton : MonoBehaviour
         }
     }
 
-    public void OnStartGameClicked()
+    public void OnButtonClicked()
     {
-        Debug.Log("=== START BUTTON CLICKED ===");
+        Debug.Log($"=== BUTTON CLICKED: Loading '{targetSceneName}' ===");
 
         if (NetworkManager.Singleton == null)
         {
@@ -87,6 +87,12 @@ public class StartGameButton : MonoBehaviour
         if (playerPrefab == null)
         {
             Debug.LogError("Player prefab not assigned!");
+            return;
+        }
+
+        if (string.IsNullOrEmpty(targetSceneName))
+        {
+            Debug.LogError("Target scene name is empty!");
             return;
         }
 
@@ -110,9 +116,9 @@ public class StartGameButton : MonoBehaviour
         // STEP 3: Subscribe to scene loaded event
         NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += OnSceneLoadComplete;
 
-        // STEP 4: Load the play scene
-        Debug.Log("Loading playscene...");
-        NetworkManager.Singleton.SceneManager.LoadScene("playscene", LoadSceneMode.Single);
+        // STEP 4: Load the target scene
+        Debug.Log($"Loading scene: {targetSceneName}...");
+        NetworkManager.Singleton.SceneManager.LoadScene(targetSceneName, LoadSceneMode.Single);
     }
 
     private void OnSceneLoadComplete(string sceneName, LoadSceneMode loadSceneMode, System.Collections.Generic.List<ulong> clientsCompleted, System.Collections.Generic.List<ulong> clientsTimedOut)
@@ -164,7 +170,7 @@ public class StartGameButton : MonoBehaviour
             }
         }
 
-        // Destroy this button now that we're in play scene
+        // Destroy this button now that we're in the new scene
         Destroy(gameObject);
     }
 }

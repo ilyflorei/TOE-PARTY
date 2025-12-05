@@ -106,7 +106,7 @@ public class LobbyJoinCodeDisplay : MonoBehaviour
         
         if(retryCount >= maxRetries)
         {
-            Debug.Error("Failed to get instance after maximum attempts");
+            Debug.LogError("Failed to get instance after maximum attempts");
             yield break;
         }
         ++retryCount;
